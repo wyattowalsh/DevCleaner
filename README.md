@@ -1,6 +1,9 @@
-# dep_cleaner
+# ***`DevCleaner`***
 
-Rust CLI to carefully remove project dependencies (node_modules/, .venv/, etc ...) from a rig
+[Overview](#overview) | [Features](#features) | [Usage](#usage) | [Environments](#supported-environments) | [Configuration](#configuration) | [Build](#build-and-installation) | [Contributing](#contribution-guidelines)
+
+> [!IMPORTANT]
+> DevCleaner helps you reclaim disk space by safely removing dependency directories.
 
 ## Overview
 
@@ -29,6 +32,9 @@ dep_cleaner is a production-ready CLI tool that recursively scans specified dire
 dep_cleaner <directories> [OPTIONS]
 ```
 
+> [!NOTE]
+> This CLI is flexible. Always review the directories you plan to delete or use `--dry_run`.
+
 ### Examples
 
 ```sh
@@ -41,6 +47,15 @@ dep_cleaner /path/to/project --config /path/to/config.toml
 # Simulate deletions without performing them
 dep_cleaner /path/to/project --dry_run
 ```
+
+<details><summary>Advanced Usage Examples</summary>
+
+```sh
+# Combine multiple flags:
+dep_cleaner /path/to/project1 /path/to/project2 --config ./custom_config.toml --dry_run
+```
+
+</details>
 
 ## Configuration
 
@@ -82,6 +97,38 @@ default_target_directories = ["/path/to/project1", "/path/to/project2"]
 # Options: "follow", "ignore", "detect"
 symlink_handling = "detect"
 ```
+
+## Supported Environments
+
+<details>
+<summary>Click to expand supported environment list</summary>
+
+| Environment | Directory | Description |
+|------------|-----------|-------------|
+| Node.js | `node_modules` | NPM dependencies |
+| Python | `.venv` | Virtual environments |
+| Rust | `target` | Build artifacts |
+| Java | `target` | Maven build directory |
+| Gradle | `.gradle` | Gradle cache |
+
+</details>
+
+### Adding Custom Environments
+
+```mermaid
+graph LR
+    A[Config File] -->|Add Directory| B[dependency_directories]
+    B -->|Automatic Detection| C[DevCleaner]
+    C -->|Recursive Scan| D[Clean Up]
+```
+
+To detect additional directories, add them to the `dependency_directories` array in your config file:
+
+```toml
+dependency_directories = ["node_modules", ".venv", "my_custom_env"]
+```
+
+This ensures dep_cleaner will recursively remove or prompt for the specified directories.
 
 ## Build and Installation
 

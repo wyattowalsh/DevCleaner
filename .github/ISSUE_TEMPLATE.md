@@ -40,6 +40,9 @@ additional = { default_target_directories = ["/path/to/project1", "/path/to/proj
 - Rust version: [e.g., 1.56.0]
 - dep_cleaner version: [e.g., 1.0]
 
+> [!TIP]
+> Please include logs, relevant configuration, and steps to reproduce for faster resolution.
+
 ## Additional Context
 
 <!-- Add any other context about the problem here. -->
