@@ -1,0 +1,34 @@
+# Configuration file for dep_cleaner
+
+# List of dependency directories to search for and delete
+# Example: ["node_modules", ".venv"]
+dependency_directories = ["node_modules", ".venv"]
+
+# Logging settings
+[logging]
+# Console output settings
+# Options: "plain", "color"
+console_output = "color"
+
+# File-based logging settings
+# Path to the log file
+file_path = "logs/dep_cleaner.log"
+
+# Structured logging settings
+# Options: "json", "plain"
+structured_format = "json"
+
+# Error handling policies
+[error_handling]
+# Options: "prompt", "continue", "abort"
+on_error = "prompt"
+
+# Additional parameters
+[additional]
+# Default target directories to scan
+# Example: ["/path/to/project1", "/path/to/project2"]
+default_target_directories = ["/path/to/project1", "/path/to/project2"]
+
+# Symlink handling preferences
+# Options: "follow", "ignore", "detect"
+symlink_handling = "detect"
